@@ -1,0 +1,13 @@
+function borrarMisPedidos() {
+  localStorage.setItem('misPedidos', JSON.stringify([]));
+}
+
+// Esperar a que el DOM se cargue completamente
+document.addEventListener('DOMContentLoaded', function () {
+  // Asociar el evento click al botón
+  document.getElementById('borrarPedidosBtn').addEventListener('click', function () {
+    // Llamar a la función para borrar los pedidos
+    borrarMisPedidos();
+    // Aquí puedes agregar cualquier otra lógica que desees ejecutar después de borrar los pedidos
+  });
+});

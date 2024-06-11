@@ -1,0 +1,129 @@
+function agregarProducto(nombre, precio) {
+  var cesta = JSON.parse(localStorage.getItem('cesta')) || [];
+  cesta.push({ nombre, precio });
+  localStorage.setItem('cesta', JSON.stringify(cesta));
+  alert('Producto añadido a la cesta');
+}
+
+function actualizarCesta() {
+  var cesta = JSON.parse(localStorage.getItem('cesta')) || [];
+  var listaProductos = document.getElementById('cestaProductos');
+  var totalPrecio = 0;
+  var productosAgrupados = {};
+
+  listaProductos.innerHTML = '';
+
+  // Agrupar productos por nombre y contar cuántas veces aparece cada uno
+  cesta.forEach(producto => {
+    var nombre = producto.nombre;
+    var precio = parseFloat(producto.precio);
+
+    if (productosAgrupados[nombre]) {
+      productosAgrupados[nombre].cantidad++;
+      productosAgrupados[nombre].precio += precio;
+    } else {
+      productosAgrupados[nombre] = {
+        cantidad: 1,
+        precio: precio
+      };
+    }
+  });
+
+  // Generar la lista de productos agrupados
+  Object.keys(productosAgrupados).forEach(nombre => {
+    var producto = productosAgrupados[nombre];
+    var li = document.createElement('li');
+    li.textContent = 'x' + producto.cantidad + ' ' + nombre + ' - ' + producto.precio.toFixed(2) + '€'; // Modificación aquí
+  
+    var botonEliminar = document.createElement('button');
+    botonEliminar.textContent = 'Eliminar';
+    botonEliminar.addEventListener('click', function () {
+      eliminarProducto(nombre);
+    });
+  
+    li.appendChild(botonEliminar);
+    listaProductos.appendChild(li);
+    totalPrecio += producto.precio;
+  });
+  
+  var hacerPedidoBtn = document.getElementById('hacerPedidoBtn');
+  if (!hacerPedidoBtn) {
+    // Si el botón no existe, crearlo y agregarlo al final del contenido del modal
+    hacerPedidoBtn = document.createElement('button');
+    hacerPedidoBtn.id = 'hacerPedidoBtn';
+    hacerPedidoBtn.textContent = 'Hacer pedido';
+    hacerPedidoBtn.addEventListener('click', function () {
+      if (confirm('¿Estás seguro de que deseas hacer el pedido?')) {
+        transferirCestaAMisPedidos(); // Llama a la función para transferir los productos de la cesta a los pedidos
+        localStorage.removeItem('cesta'); // Vacía la cesta
+        actualizarCesta();
+        mostrarMisPedidos(); // Aquí se llama a la función para mostrar los pedidos
+        alert('¡Pedido realizado con éxito!');
+      }
+    });
+    document.querySelector('.modal-content2').appendChild(hacerPedidoBtn);
+  }
+
+  document.getElementById('totalPrecio').textContent = "Total: " + totalPrecio.toFixed(2) + '€';
+
+}
+
+function transferirCestaAMisPedidos() {
+  var cesta = JSON.parse(localStorage.getItem('cesta')) || [];
+  var misPedidos = JSON.parse(localStorage.getItem('misPedidos')) || [];
+
+  // Agrupar todos los productos de la cesta en un solo pedido
+  var nuevoPedido = {
+    productos: cesta,
+    fecha: new Date().toLocaleString() // Agregar la fecha del pedido
+  };
+
+  // Agregar el pedido al historial de pedidos
+  misPedidos.push(nuevoPedido);
+
+  localStorage.setItem('misPedidos', JSON.stringify(misPedidos));
+}
+
+function mostrarMisPedidos() {
+  var misPedidos = JSON.parse(localStorage.getItem('misPedidos')) || [];
+  var misPedidosContent = document.getElementById('misPedidosContent');
+  misPedidosContent.innerHTML = '';
+
+  misPedidos.forEach((pedido, index) => {
+    var pedidoDiv = document.createElement('div');
+    pedidoDiv.classList.add('pedido');
+    pedidoDiv.innerHTML = `<h3>Pedido ${index + 1} - ${pedido.fecha}</h3>`;
+    var botonMostrarProductos = document.createElement('button');
+    botonMostrarProductos.textContent = 'Mostrar Productos';
+    botonMostrarProductos.addEventListener('click', function () {
+      mostrarProductosDelPedido(pedido);
+    });
+    pedidoDiv.appendChild(botonMostrarProductos);
+    misPedidosContent.appendChild(pedidoDiv);
+  });
+}
+
+function mostrarProductosDelPedido(productos) {
+  // Muestra los productos del pedido
+  var productosDelPedidoContent = document.getElementById('productosDelPedidoContent');
+  productosDelPedidoContent.innerHTML = '';
+
+  productos.forEach(producto => {
+    var productoDiv = document.createElement('div');
+    productoDiv.textContent = `${producto.nombre} - ${producto.precio}`;
+    productosDelPedidoContent.appendChild(productoDiv);
+  });
+}
+
+
+function eliminarProducto(nombre) {
+  var cesta = JSON.parse(localStorage.getItem('cesta')) || [];
+  // Buscar el índice del producto en la cesta
+  var index = cesta.findIndex(producto => producto.nombre === nombre);
+  if (index !== -1) {
+    // Eliminar el producto del array utilizando el índice encontrado
+    cesta.splice(index, 1);
+    localStorage.setItem('cesta', JSON.stringify(cesta));
+    actualizarCesta();
+  }
+}

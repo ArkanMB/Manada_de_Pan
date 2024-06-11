@@ -5,52 +5,153 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manada de pan</title>
-  <link rel="stylesheet" href="./code/css/style.css">
-  <script src="./code/js/slider.js" defer></script>
-  <script src="./code/js/sticky.js" defer></script>
-  <script src="./code/js/fade.js" defer></script>
+  <link rel="stylesheet" href="/code/css/style.css">
+  <link rel="stylesheet" href="/code/css/style2.css">
+  <link rel="stylesheet" href="/code/css/style3.css">
+  <script src="/code/js/slider.js" defer></script>
+  <script src="/code/js/sticky.js" defer></script>
+  <script src="/code/js/fade.js" defer></script>
+  <script src="/code/js/modal.js" defer></script>
+  <script src="/code/js/perfil.js" defer></script>
+  <script src="/code/js/contenido2.js" defer></script>
+  <script src="/code/js/contenido3.js" defer></script>
+  <script src="code/js/modal2.js" defer></script>
+  <script src="code/js/cesta.js" defer></script>
+  <script src="code/js/modal3.js" defer></script>
+
 
 
 </head>
 
 <body>
-  <nav class="nav">
-    <img src="./img/logo.png" alt="logo manada de pan" class="logo">
-    <img src="./img/logo_texto.png" alt="logo-texto manada de pan" class="logotexto">
 
+  <nav class="nav">
+    <a href="index.html">
+      <img src="/img/logo.png" alt="logo manada de pan" class="logo">
+      <img src="/img/logo_texto.png" alt="logo-texto manada de pan" class="logotexto">
+    </a>
     <div class="nav-container">
-      <a href="#" class="opciones-nav">Cesta</a>
-      <a href="#" class="opciones-nav">Mi perfil</a>
+      <a href="index.html" class="opciones-nav">Home</a>
+      <a href="#" id="cestaBtn" class="opciones-nav">Cesta</a>
+
+      <div id="cestaModal" class="modal2">
+        <div class="modal-content2">
+          <span class="close2">&times;</span>
+          <h2 class="tuCesta">Tu Cesta</h2>
+          <ul id="cestaProductos"></ul>
+          <span id="totalPrecio">
+        </div>
+      </div>
+
+      <a href="#" id="misPedidosBtn" class="opciones-nav">Mis pedidos</a>
+
+      <div id="modalPedido" class="pedidoModal">
+        <div class="modal-content-pedido">
+          <span class="close-pedido">&times;</span>
+          <h2>Mis pedidos</h2>
+          <div id="misPedidosContent"></div>
+          <button id="borrarPedidosBtn">Borrar Pedidos</button>
+        </div>
+      </div>
+
+      <a href="#" id="btn-perfil" class="opciones-nav">Login</a>
+
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="login-container">
+            <div class="form-usuario">
+              <form action="#">
+                <h2>Iniciar sesión</h2>
+                <label>
+                  <input type="radio" name="opcion" value="login" checked> Login
+                </label>
+                <label>
+                  <input type="radio" name="opcion" value="registro"> Registro
+                </label>
+
+                <div id="login" style="display: block;">
+
+                  <div class="input-contenedor">
+                    <input type="text" name="usuario" required>
+                    <label for="#">Usuario</label>
+                  </div>
+
+                  <div class="input-contenedor">
+                    <input type="password" name="contrasena" required>
+                    <label for="#">Contraseña</label>
+                  </div>
+
+                </div>
+
+                <div id="registro" style="display: none;">
+
+                  <div class="input-contenedor">
+                    <input type="email" name="usuario" required>
+                    <label for="#">Usuario</label>
+                  </div>
+
+                  <div class="input-contenedor">
+                    <input type="email" name="email" required>
+                    <label for="#">Correo electrónico</label>
+                  </div>
+
+                  <div class="input-contenedor">
+                    <input type="password" name="contrasena_registro" required>
+                    <label for="#">Contraseña</label>
+                  </div>
+
+                </div>
+                <input type="submit" value="Enviar">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </nav>
 
-  <img src="./img/imagen principal.png" alt="perro y gato principal" class="img-principal">
+  <img src="/img/imagen principal.png" alt="perro y gato principal" class="img-principal">
 
   <nav class="nav2">
-    <a href="#" class="opciones-nav2">Sobre nosotros</a>
-    <a href="#ayudar" class="opciones-nav2">Cómo ayudar</a>
-    <a href="#" class="opciones-nav2">Nuestros animales</a>
-    <a href="#" class="opciones-nav2">Servicios y productos</a>
+    <a href="#info-sobre-nosotros" class="opciones-nav2">Sobre nosotros</a>
+    <a href="#info-ayudar" class="opciones-nav2">Cómo ayudar</a>
+    <a href="#" class="opciones-nav2" id="enlace">Nuestros animales</a>
+    <a href="#" class="opciones-nav2" id="enlace2">Servicios y productos</a>
     <a href="#footer" class="opciones-nav2">Contacto</a>
   </nav>
 
-  <div id="contenido-sobre-nosotros" style="display: none;">
-    <p>Aquí va el contenido que quieres mostrar cuando se hace clic en "Sobre nosotros".</p>
+  <div id="info-sobre-nosotros" class="info-caja">
+    <ul>
+      <li>Historia de la organización</li>
+      <li>Equipo</li>
+      <li>Testimonios e historias de impacto</li>
+      <li>Preguntas frecuentes (FAQ)</li>
+    </ul>
+  </div>
+  <div id="info-ayudar" class="info-caja">
+    <ul>
+      <li>Adoptar</li>
+      <li>Hacerse voluntario</li>
+      <li>Casa de acogida</li>
+      <li>Hacerse asociado</li>
+    </ul>
   </div>
 
   <header>
     <div class="slideshow-container">
 
       <div class="mySlides fade">
-        <img src="./img/carrusel1.png" style="width:100%">
+        <img src="img/carrusel1.png" style="width:100%">
       </div>
 
       <div class="mySlides fade">
-        <img src="./img/carrusel2.png" style="width:100%">
+        <img src="/img/carrusel2.png" style="width:100%">
       </div>
 
       <div class="mySlides fade">
-        <img src="./img/carrusel3.png" style="width:100%">
+        <img src="/img/carrusel3.png" style="width:100%">
       </div>
 
       <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -67,116 +168,125 @@
 
   </header>
 
-  <section id="ayudar" class="zigzag">
+  <div id="contenido">
 
-    <div class="adoptar">
-      <p class="titulo-adoptar">Adoptar</p>
-      <p class="descripcion-adoptar"> Únete a nuestra familia de apoyo mensual y ayuda a cambiar vidas todos los días.
-        Como asociado, tu generosa contribución mensual garantiza que podamos continuar brindando refugio, alimentación,
-        atención veterinaria y amor a los animales necesitados. Cada pequeña ayuda hace una gran diferencia. ¡Hazte
-        asociado hoy y sé parte de nuestro compromiso continuo con el bienestar animal! </p>
+    <section id="ayudar" class="zigzag">
+
+      <div class="adoptar">
+        <p class="titulo-adoptar">Adoptar</p>
+        <p class="descripcion-adoptar"> Únete a nuestra familia de apoyo mensual y ayuda a cambiar vidas todos los días.
+          Como asociado, tu generosa contribución mensual garantiza que podamos continuar brindando refugio,
+          alimentación,
+          atención veterinaria y amor a los animales necesitados. Cada pequeña ayuda hace una gran diferencia. ¡Hazte
+          asociado hoy y sé parte de nuestro compromiso continuo con el bienestar animal! </p>
+      </div>
+
+      <div class="voluntario">
+        <p class="titulo-voluntario">Hacerse voluntario</p>
+        <p class="descripcion-voluntario"> ¡Únete a nuestro equipo de voluntarios y marca la diferencia en las vidas de
+          nuestros amigos de cuatro patas! Ya sea paseando perros, jugando con gatitos o ayudando en eventos de
+          adopción,
+          tu tiempo y energía son invaluables para nosotros. No se requiere experiencia previa, solo un amor genuino por
+          los animales y el deseo de ayudar. Únete a nuestra familia voluntaria hoy mismo y experimenta la alegría de
+          hacer una diferencia. </p>
+      </div>
+
+      <div class="acogida">
+        <p class="titulo-acogida">Casa de acogida</p>
+        <p class="descripcion-acogida"> ¡Conviértete en un salvavidas temporal para un animal necesitado! Como casa de
+          acogida, brindarás un hogar amoroso y seguro a un perro o gato mientras esperan su hogar para siempre. Ya sea
+          que estés dispuesto a cuidar de un cachorro necesitado de socialización o de un gato herido en proceso de
+          recuperación, tu apoyo es crucial para salvar vidas. ¡Únete a nuestro equipo de hogares de acogida y sé parte
+          del puente entre el pasado difícil y el futuro brillante de estos animales! </p>
+      </div>
+
+      <div class="asociado">
+        <p class="titulo-asociado">Hacerse asociado</p>
+        <p class="descripcion-acogida"> Únete a nuestra familia de apoyo mensual y ayuda a cambiar vidas todos los días.
+          Como asociado, tu generosa contribución mensual garantiza que podamos continuar brindando refugio,
+          alimentación,
+          atención veterinaria y amor a los animales necesitados. Cada pequeña ayuda hace una gran diferencia. ¡Hazte
+          asociado hoy y sé parte de nuestro compromiso continuo con el bienestar animal! </p>
+      </div>
+
+    </section>
+
+    <div class="adop-urg">
+      <hr class="linea-adop-urg">
+      <p class="titulo-adop-urg">Adopciones urgentes</p>
+      <hr class="linea-adop-urg">
     </div>
+    <section class="cards-container">
+      <div class="card-adop-urg">
+        <img src="/img/adopcion urgente 1.jpg" alt="Perro Yun" class="img-adop-urg">
+        <div class="card-content">
+          <button class="btn-detalles-adop-urg">Detalles</button>
+          <p class="descripcion-adop-urg">Yun, un perro mayor con un corazón lleno de amor, necesita urgentemente un
+            hogar lleno de cuidado y compasión. Con varias condiciones de salud, Yun anhela un lugar donde pueda pasar
+            sus años dorados rodeado de amor y atención.</p>
+        </div>
+      </div>
 
-    <div class="voluntario">
-      <p class="titulo-voluntario">Hacerse voluntario</p>
-      <p class="descripcion-voluntario"> ¡Únete a nuestro equipo de voluntarios y marca la diferencia en las vidas de
-        nuestros amigos de cuatro patas! Ya sea paseando perros, jugando con gatitos o ayudando en eventos de adopción,
-        tu tiempo y energía son invaluables para nosotros. No se requiere experiencia previa, solo un amor genuino por
-        los animales y el deseo de ayudar. Únete a nuestra familia voluntaria hoy mismo y experimenta la alegría de
-        hacer una diferencia. </p>
-    </div>
+      <div class="card-adop-urg">
+        <img src="/img/adopcion urgente 2.jpg" alt="Gato Blaire" class="img-adop-urg">
+        <div class="card-content">
+          <button class="btn-detalles-adop-urg">Detalles</button>
+          <p class="descripcion-adop-urg">Blaire es un gatito bebé que necesita cuidados especiales debido a problemas
+            de
+            corazón. Está lleno de amor y espera un hogar amoroso y compasivo donde pueda recibir el cuidado y la
+            atención
+            que necesita para prosperar.</p>
+        </div>
+      </div>
 
-    <div class="acogida">
-      <p class="titulo-acogida">Casa de acogida</p>
-      <p class="descripcion-acogida"> ¡Conviértete en un salvavidas temporal para un animal necesitado! Como casa de
-        acogida, brindarás un hogar amoroso y seguro a un perro o gato mientras esperan su hogar para siempre. Ya sea
-        que estés dispuesto a cuidar de un cachorro necesitado de socialización o de un gato herido en proceso de
-        recuperación, tu apoyo es crucial para salvar vidas. ¡Únete a nuestro equipo de hogares de acogida y sé parte
-        del puente entre el pasado difícil y el futuro brillante de estos animales! </p>
-    </div>
+      <div class="card-adop-urg">
+        <img src="/img/adopcion urgente 3.jpg" alt="Gato Fredy" class="img-adop-urg">
+        <div class="card-content">
+          <button class="btn-detalles-adop-urg">Detalles</button>
+          <p class="descripcion-adop-urg">Fredy es un gato encantador con un toque especial: es sordo. Aunque no puede
+            escuchar, su corazón está lleno de amor y curiosidad. Con su personalidad única y su espíritu valiente,
+            Fredy
+            está listo para robar tu corazón sin decir una palabra.</p>
+        </div>
+      </div>
 
-    <div class="asociado">
-      <p class="titulo-asociado">Hacerse asociado</p>
-      <p class="descripcion-acogida"> Únete a nuestra familia de apoyo mensual y ayuda a cambiar vidas todos los días.
-        Como asociado, tu generosa contribución mensual garantiza que podamos continuar brindando refugio, alimentación,
-        atención veterinaria y amor a los animales necesitados. Cada pequeña ayuda hace una gran diferencia. ¡Hazte
-        asociado hoy y sé parte de nuestro compromiso continuo con el bienestar animal! </p>
-    </div>
+      <div class="card-adop-urg">
+        <img src="/img/adopcion urgente 4.jpg" alt="Perro Lola" class="img-adop-urg">
+        <div class="card-content">
+          <button class="btn-detalles-adop-urg">Detalles</button>
+          <p class="descripcion-adop-urg">Lola es una perrita dulce y amorosa que lucha contra un trastorno de ansiedad.
+            A pesar de sus desafíos, es una compañera leal y cariñosa que ansía encontrar un hogar donde pueda sentirse
+            segura, protegida y recibir el apoyo que necesita.</p>
+        </div>
+      </div>
+    </section>
 
-  </section>
-
-  <div class="adop-urg">
-    <hr class="linea-adop-urg">
-    <p class="titulo-adop-urg">Adopciones urgentes</p>
-    <hr class="linea-adop-urg">
+    <section class="banner-estadistica">
+      <img src="/img/banner estad.png" alt="imagen de perro y gato" class="img-banner-est">
+      <div class="texto-overlay">
+        <div class="estadistica">
+          <div class="texto-numero-est">2845</div>
+          <div class="texto-descrip-est">animales <br> adoptados</div>
+        </div>
+        <div class="estadistica">
+          <div class="texto-numero-est">154</div>
+          <div class="texto-descrip-est">voluntarios <br> comprometidos</div>
+        </div>
+        <div class="estadistica">
+          <div class="texto-numero-est">83</div>
+          <div class="texto-descrip-est">eventos de <br> concienciación</div>
+        </div>
+        <div class="estadistica">
+          <div class="texto-numero-est">52</div>
+          <div class="texto-descrip-est">rescates de <br> emergencia</div>
+        </div>
+        <div class="estadistica">
+          <div class="texto-numero-est">15</div>
+          <div class="texto-descrip-est">asociaciones con <br> clínicas veterinarias</div>
+        </div>
+      </div>
+    </section>
   </div>
-  <section class="cards-container">
-    <div class="card-adop-urg">
-      <img src="./img/adopcion urgente 1.jpg" alt="Perro Yun" class="img-adop-urg">
-      <div class="card-content">
-        <button class="btn-detalles-adop-urg">Detalles</button>
-        <p class="descripcion-adop-urg">Yun, un perro mayor con un corazón lleno de amor, necesita desesperadamente un
-          hogar lleno de cuidado y compasión. Con varias condiciones de salud, Coco anhela un lugar donde pueda pasar
-          sus años dorados rodeado de amor y atención.</p>
-      </div>
-    </div>
-
-    <div class="card-adop-urg">
-      <img src="./img/adopcion urgente 2.jpg" alt="Gato Blaire" class="img-adop-urg">
-      <div class="card-content">
-        <button class="btn-detalles-adop-urg">Detalles</button>
-        <p class="descripcion-adop-urg">Blaire es un gatito bebé que necesita cuidados especiales debido a problemas de
-          corazón. Está lleno de amor y espera un hogar amoroso y compasivo donde pueda recibir el cuidado y la atención
-          que necesita para prosperar.</p>
-      </div>
-    </div>
-
-    <div class="card-adop-urg">
-      <img src="./img/adopcion urgente 3.jpg" alt="Gato Fredy" class="img-adop-urg">
-      <div class="card-content">
-        <button class="btn-detalles-adop-urg">Detalles</button>
-        <p class="descripcion-adop-urg">Fredy es un gato encantador con un toque especial: es sordo. Aunque no puede
-          escuchar, su corazón está lleno de amor y curiosidad. Con su personalidad única y su espíritu valiente, Fredy
-          está listo para robar tu corazón sin decir una palabra.</p>
-      </div>
-    </div>
-
-    <div class="card-adop-urg">
-      <img src="./img/adopcion urgente 4.jpg" alt="Perro Lola" class="img-adop-urg">
-      <div class="card-content">
-        <button class="btn-detalles-adop-urg">Detalles</button>
-        <p class="descripcion-adop-urg">Lola es una perrita dulce y amorosa que lucha contra un trastorno de ansiedad.
-          A pesar de sus desafíos, es una compañera leal y cariñosa que ansía encontrar un hogar donde pueda sentirse
-          segura, protegida y recibir el apoyo que necesita.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="banner-estadistica">
-    <img src="./img/banner estad.png" alt="imagen de perro y gato" class="img-banner-est">
-    <div class="texto-overlay">
-      <div class="estadistica">
-        <div class="texto-numero-est">2845</div>
-        <div class="texto-descrip-est">animales <br> adoptados</div>
-      </div>
-      <div class="estadistica">
-        <div class="texto-numero-est">154</div>
-        <div class="texto-descrip-est">voluntarios <br> comprometidos</div>
-      </div>
-      <div class="estadistica">
-        <div class="texto-numero-est">83</div>
-        <div class="texto-descrip-est">eventos de <br> concienciación</div>
-      </div>
-      <div class="estadistica">
-        <div class="texto-numero-est">52</div>
-        <div class="texto-descrip-est">rescates de <br> emergencia</div>
-      </div>
-      <div class="estadistica">
-        <div class="texto-numero-est">15</div>
-        <div class="texto-descrip-est">asociaciones con <br> clínicas veterinarias</div>
-      </div>
-    </div>
-  </section>
 
   <section class="form-info">
     <div class="texto-informativo">
@@ -205,19 +315,19 @@
         <div class="contacto-footer">
           <div class="titulo-opciones-footer">Contáctanos</div>
           <div class="descrip-opciones-footer">
-            <p></p><img src="./img/icons/phone.png" alt="icono-telefono"> +34 615482648</p>
-            <p><img src="./img/icons/mail.png" alt="icono-email"> manadadepan@gmail.com</p>
-            <p><img src="./img/icons/ubicacion.png" alt="icono-ubi"> C/ Clarinete, 13 - 29004, Málaga</p>
+            <p></p><img src="/img/icons/phone.png" alt="icono-telefono"> +34 615482648</p>
+            <p><img src="/img/icons/mail.png" alt="icono-email"> manadadepan@gmail.com</p>
+            <p><img src="/img/icons/ubicacion.png" alt="icono-ubi"> C/ Clarinete, 13 - 29004, Málaga</p>
           </div>
         </div>
 
         <div class="redes-sociales-footer">
           <div class="titulo-opciones-footer">Redes sociales</div>
           <div class="iconos-redes-sociales">
-            <img src="./img/icons/facebook.png" alt="icono-facebook">
-            <img src="./img/icons/instagram.png" alt="icono-instagram">
-            <img src="./img/icons/tik-tok.png" alt="icono-tiktok">
-            <img src="./img/icons/equis.png" alt="icono-equis">
+            <img src="/img/icons/facebook.png" alt="icono-facebook">
+            <img src="/img/icons/instagram.png" alt="icono-instagram">
+            <img src="/img/icons/tik-tok.png" alt="icono-tiktok">
+            <img src="/img/icons/equis.png" alt="icono-equis">
           </div>
         </div>
         <div class="info-legal-footer">
