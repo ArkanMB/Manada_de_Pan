@@ -10,10 +10,23 @@ misPedidosBtn.addEventListener('click', function() {
   // Aquí podrías cargar el contenido de los pedidos en el modal
   var misPedidos = JSON.parse(localStorage.getItem('misPedidos')) || [];
   misPedidosContent.innerHTML = ''; // Vacía el contenido previo
+
+  // Recorrer todos los pedidos
   misPedidos.forEach(function(pedido) {
-    var p = document.createElement('p');
-    p.textContent = pedido.nombre + ' - ' + pedido.precio;
-    misPedidosContent.appendChild(p);
+    // Elemento de información del pedido
+    var pedidoInfo = document.createElement('p');
+    pedidoInfo.textContent = 'Identificador del pedido: ' + pedido.id;
+    pedidoInfo.classList.add('pedido-info'); // Agregar clase para estilo específico
+    misPedidosContent.appendChild(pedidoInfo);
+
+    // Recorrer elementos del pedido
+    pedido.productos.forEach(function(itemsPedido) {
+      // Elemento de información del producto del pedido
+      var productoInfo = document.createElement('p');
+      productoInfo.textContent = itemsPedido.nombre + ' - ' + itemsPedido.precio + '€';
+      productoInfo.classList.add('producto-info'); // Agregar clase para estilo específico
+      misPedidosContent.appendChild(productoInfo);
+    });
   });
 });
 

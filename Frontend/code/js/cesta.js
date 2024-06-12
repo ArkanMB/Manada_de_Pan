@@ -68,14 +68,21 @@ function actualizarCesta() {
 
 }
 
+// cesta.js
+
+// Función para generar un ID único
+function generarIdUnico() {
+  return '_' + Math.random().toString(36).substr(2, 9);
+}
+
 function transferirCestaAMisPedidos() {
   var cesta = JSON.parse(localStorage.getItem('cesta')) || [];
   var misPedidos = JSON.parse(localStorage.getItem('misPedidos')) || [];
 
   // Agrupar todos los productos de la cesta en un solo pedido
   var nuevoPedido = {
-    productos: cesta,
-    fecha: new Date().toLocaleString() // Agregar la fecha del pedido
+    id: generarIdUnico(),
+    productos: cesta
   };
 
   // Agregar el pedido al historial de pedidos
@@ -92,11 +99,11 @@ function mostrarMisPedidos() {
   misPedidos.forEach((pedido, index) => {
     var pedidoDiv = document.createElement('div');
     pedidoDiv.classList.add('pedido');
-    pedidoDiv.innerHTML = `<h3>Pedido ${index + 1} - ${pedido.fecha}</h3>`;
+    pedidoDiv.innerHTML = `<h3>Pedido ${pedido.id}</h3>`;
     var botonMostrarProductos = document.createElement('button');
     botonMostrarProductos.textContent = 'Mostrar Productos';
     botonMostrarProductos.addEventListener('click', function () {
-      mostrarProductosDelPedido(pedido);
+      mostrarProductosDelPedido(pedido.productos);
     });
     pedidoDiv.appendChild(botonMostrarProductos);
     misPedidosContent.appendChild(pedidoDiv);
@@ -114,7 +121,6 @@ function mostrarProductosDelPedido(productos) {
     productosDelPedidoContent.appendChild(productoDiv);
   });
 }
-
 
 function eliminarProducto(nombre) {
   var cesta = JSON.parse(localStorage.getItem('cesta')) || [];
