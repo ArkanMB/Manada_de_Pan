@@ -28,7 +28,7 @@ class AuthController extends Controller
   {
     auth()->user()->tokens()->delete();
     return [
-      'message' => 'Sesion cerrada correctamente'
+      'message' => 'Session closed successfully'
     ];
   }
 
@@ -38,7 +38,7 @@ class AuthController extends Controller
     if (!Hash::check($request->password, $user->password)) {
       return response()->json(
         [
-          'message' => 'Contraseña incorrecta'
+          'message' => 'Password incorrect'
         ],
         401
       );

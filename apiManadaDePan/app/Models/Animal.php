@@ -9,6 +9,11 @@ class Animal extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ['name', 'breed', 'sex', 'age', 'animal_type_id'];
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function animaltype() 
+    {
+        return $this->belongsTo(AnimalType::class, 'animal_type_id');
+    }
 }
