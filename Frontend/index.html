@@ -22,6 +22,8 @@
 
 
 
+
+
 </head>
 
 <body>
@@ -32,19 +34,22 @@
       <img src="./img/logo_texto.png" alt="logo-texto manada de pan" class="logotexto">
     </a>
     <div class="nav-container">
-      <a href="index.html" class="opciones-nav">Home</a>
-      <a href="#" id="cestaBtn" class="opciones-nav">Cesta</a>
-
+      <div class="opciones-principales">
+        <a href="index.html" class="opciones-nav">Home</a>
+        <a href="#" id="cestaBtn" class="opciones-nav">Cesta</a>
+        <a href="#" id="misPedidosBtn" class="opciones-nav">Mis pedidos</a>
+        <a href="#" id="btn-perfil" class="opciones-nav">Login</a>
+      </div>
       <div id="cestaModal" class="modal2">
         <div class="modal-content2">
           <span class="close2">&times;</span>
           <h2 class="tuCesta">Tu Cesta</h2>
           <ul id="cestaProductos"></ul>
-          <span id="totalPrecio">
+          <span id="totalPrecio"></span>
         </div>
       </div>
 
-      <a href="#" id="misPedidosBtn" class="opciones-nav">Mis pedidos</a>
+
 
       <div id="modalPedido" class="pedidoModal">
         <div class="modal-content-pedido">
@@ -54,7 +59,7 @@
         </div>
       </div>
 
-      <a href="#" id="btn-perfil" class="opciones-nav">Login</a>
+
 
       <div id="myModal" class="modal">
         <div class="modal-content">
@@ -73,34 +78,34 @@
                 <div id="login" style="display: block;">
 
                   <div class="input-contenedor">
-                    <input type="text" name="usuario" required>
-                    <label for="#">Usuario</label>
+                    <input type="text" id="login-usuario" name="usuario" required>
+                    <label for="login-usuario">Usuario</label>
                   </div>
 
                   <div class="input-contenedor">
-                    <input type="password" name="contrasena" required>
-                    <label for="#">Contraseña</label>
+                    <input type="password" id="login-contrasena" name="contrasena" required>
+                    <label for="login-contrasena">Contraseña</label>
                   </div>
 
                 </div>
 
                 <div id="registro" style="display: none;">
-
                   <div class="input-contenedor">
-                    <input type="email" name="usuario" required>
-                    <label for="#">Usuario</label>
+                    <input type="text" id="registro-usuario" name="usuario" required>
+                    <label for="registro-usuario">Usuario</label>
                   </div>
 
                   <div class="input-contenedor">
-                    <input type="email" name="email" required>
-                    <label for="#">Correo electrónico</label>
+                    <input type="email" id="form-email" name="email" required>
+                    <label for="form-email">Correo electrónico</label>
                   </div>
+
+
 
                   <div class="input-contenedor">
-                    <input type="password" name="contrasena_registro" required>
-                    <label for="#">Contraseña</label>
+                    <input type="password" id="registro-contrasena" name="contrasena_registro" required>
+                    <label for="registro-contrasena">Contraseña</label>
                   </div>
-
                 </div>
                 <input type="submit" value="Enviar">
               </form>
@@ -174,11 +179,11 @@
 
       <div class="adoptar">
         <p class="titulo-adoptar">Adoptar</p>
-        <p class="descripcion-adoptar"> Únete a nuestra familia de apoyo mensual y ayuda a cambiar vidas todos los días.
-          Como asociado, tu generosa contribución mensual garantiza que podamos continuar brindando refugio,
-          alimentación,
-          atención veterinaria y amor a los animales necesitados. Cada pequeña ayuda hace una gran diferencia. ¡Hazte
-          asociado hoy y sé parte de nuestro compromiso continuo con el bienestar animal! </p>
+        <p class="descripcion-adoptar"> Al adoptar, no solo estás salvando una vida, sino que también estás ganando un
+          compañero fiel que te brindará alegría y compañía incondicional. Los animales adoptados son increíblemente
+          agradecidos y llenarán tu hogar de amor y gratitud.
+          Cada mascota tiene una historia única y merece una segunda oportunidad. Visita tu refugio local y descubre a
+          tu nuevo mejor amigo. ¡Adopta, no compres! Juntos podemos hacer una gran diferencia. </p>
       </div>
 
       <div class="voluntario">

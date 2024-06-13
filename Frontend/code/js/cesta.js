@@ -13,60 +13,76 @@ function actualizarCesta() {
 
   listaProductos.innerHTML = '';
 
-  // Agrupar productos por nombre y contar cuántas veces aparece cada uno
-  cesta.forEach(producto => {
-    var nombre = producto.nombre;
-    var precio = parseFloat(producto.precio);
+  if (cesta.length === 0) {
+    // Mostrar el mensaje si la cesta está vacía
+    var mensajeVacio = document.createElement('p');
+    mensajeVacio.textContent = 'Tu cesta está vacía';
+    mensajeVacio.classList.add('mensajeVacio');
+    listaProductos.appendChild(mensajeVacio);
+  } else {
+    // Agrupar productos por nombre y contar cuántas veces aparece cada uno
+    cesta.forEach(producto => {
+      var nombre = producto.nombre;
+      var precio = parseFloat(producto.precio);
 
-    if (productosAgrupados[nombre]) {
-      productosAgrupados[nombre].cantidad++;
-      productosAgrupados[nombre].precio += precio;
-    } else {
-      productosAgrupados[nombre] = {
-        cantidad: 1,
-        precio: precio
-      };
-    }
-  });
-
-  // Generar la lista de productos agrupados
-  Object.keys(productosAgrupados).forEach(nombre => {
-    var producto = productosAgrupados[nombre];
-    var li = document.createElement('li');
-    li.textContent = 'x' + producto.cantidad + ' ' + nombre + ' - ' + producto.precio.toFixed(2) + '€'; // Modificación aquí
-  
-    var botonEliminar = document.createElement('button');
-    botonEliminar.textContent = 'Eliminar';
-    botonEliminar.addEventListener('click', function () {
-      eliminarProducto(nombre);
-    });
-  
-    li.appendChild(botonEliminar);
-    listaProductos.appendChild(li);
-    totalPrecio += producto.precio;
-  });
-  
-  var hacerPedidoBtn = document.getElementById('hacerPedidoBtn');
-  if (!hacerPedidoBtn) {
-    // Si el botón no existe, crearlo y agregarlo al final del contenido del modal
-    hacerPedidoBtn = document.createElement('button');
-    hacerPedidoBtn.id = 'hacerPedidoBtn';
-    hacerPedidoBtn.textContent = 'Hacer pedido';
-    hacerPedidoBtn.addEventListener('click', function () {
-      if (confirm('¿Estás seguro de que deseas hacer el pedido?')) {
-        transferirCestaAMisPedidos(); // Llama a la función para transferir los productos de la cesta a los pedidos
-        localStorage.removeItem('cesta'); // Vacía la cesta
-        actualizarCesta();
-        mostrarMisPedidos(); // Aquí se llama a la función para mostrar los pedidos
-        alert('¡Pedido realizado con éxito!');
+      if (productosAgrupados[nombre]) {
+        productosAgrupados[nombre].cantidad++;
+        productosAgrupados[nombre].precio += precio;
+      } else {
+        productosAgrupados[nombre] = {
+          cantidad: 1,
+          precio: precio
+        };
       }
     });
-    document.querySelector('.modal-content2').appendChild(hacerPedidoBtn);
+
+    // Generar la lista de productos agrupados
+    Object.keys(productosAgrupados).forEach(nombre => {
+      var producto = productosAgrupados[nombre];
+      var li = document.createElement('li');
+      li.textContent = 'x' + producto.cantidad + ' ' + nombre + ' - ' + producto.precio.toFixed(2) + '€';
+      
+      var botonEliminar = document.createElement('button');
+      botonEliminar.textContent = 'Eliminar';
+      botonEliminar.addEventListener('click', function () {
+        eliminarProducto(nombre);
+      });
+      
+      li.appendChild(botonEliminar);
+      listaProductos.appendChild(li);
+      totalPrecio += producto.precio;
+    });
+
+    var hacerPedidoBtn = document.getElementById('hacerPedidoBtn');
+    if (!hacerPedidoBtn) {
+      // Si el botón no existe, crearlo y agregarlo al final del contenido del modal
+      hacerPedidoBtn = document.createElement('button');
+      hacerPedidoBtn.id = 'hacerPedidoBtn';
+      hacerPedidoBtn.textContent = 'Hacer pedido';
+      hacerPedidoBtn.addEventListener('click', function () {
+        if (confirm('¿Estás seguro de que deseas hacer el pedido?')) {
+          transferirCestaAMisPedidos(); // Llama a la función para transferir los productos de la cesta a los pedidos
+          localStorage.removeItem('cesta'); // Vacía la cesta
+          actualizarCesta();
+          mostrarMisPedidos(); // Aquí se llama a la función para mostrar los pedidos
+          alert('¡Pedido realizado con éxito!');
+        }
+      });
+
+      document.querySelector('.modal-content2').appendChild(hacerPedidoBtn);
+    }
+
+    // Mostrar u ocultar el botón "Hacer pedido" basado en si la cesta está vacía o no
+    if (hacerPedidoBtn) {
+      hacerPedidoBtn.style.display = (cesta.length > 0) ? 'block' : 'none';
+    }
   }
 
   document.getElementById('totalPrecio').textContent = "Total: " + totalPrecio.toFixed(2) + '€';
-
 }
+
+
+
 
 // cesta.js
 
