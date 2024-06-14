@@ -21,7 +21,6 @@ body {
 .linea-adop-general {
   border: none;
   border-top: 1.5px solid #865C37;
-  /* Añadir una línea superior sólida */
 }
 
 .titulo-adop-general {
@@ -63,13 +62,9 @@ body {
 /* Estilos para cada tarjeta */
 .card-adop-general {
   background-color: #865c372d;
-  /* Color de fondo */
   border-radius: 30px;
-  /* Redondea las esquinas */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* Sombra */
   text-align: center;
-  /* Centra el texto dentro de la tarjeta */
 }
 
 /* Estilos para la imagen de cada animal */
@@ -83,11 +78,8 @@ body {
 
 .card-content-anim {
   display: grid;
-  /* Define el contenedor como flexbox */
   align-items: center;
-  /* Alinea verticalmente los elementos en el centro */
   padding: 0 20px;
-  /* Relleno interno */
 }
 
 .nombre-animal{
@@ -123,20 +115,18 @@ body {
   background-color: #865C37;
 }
 
+/* MEDIA QUERYS */
+
 @media (max-width: 1400px) {
   .cards-container-anim {
     grid-template-columns: 1fr 1fr;
-    /* Una columna */
     padding: 0 10px;
-    /* Ajuste de padding para pantallas más pequeñas */
   }
 }
 
 @media (max-width: 1050px) {
   .cards-container-anim {
     grid-template-columns: 1fr;
-    /* Una columna */
     padding: 0 10px;
-    /* Ajuste de padding para pantallas más pequeñas */
   }
 }

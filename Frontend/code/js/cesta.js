@@ -74,7 +74,7 @@ if (!hacerPedidoBtn) {
       // Recargar la página después de realizar el pedido
       window.location.reload();
 
-      // Opcional: Ocultar el botón "Hacer pedido" después de realizar el pedido
+      // Ocultar el botón "Hacer pedido" después de realizar el pedido
       hacerPedidoBtn.style.display = 'none';
 
       alert('¡Pedido realizado con éxito!');
@@ -94,9 +94,6 @@ document.getElementById('totalPrecio').textContent = "Total: " + totalPrecio.toF
 }
 
 
-
-
-// cesta.js
 
 // Función para generar un ID único
 function generarIdUnico() {

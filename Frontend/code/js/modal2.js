@@ -1,5 +1,3 @@
-
-
 (function() {
   var modal = document.getElementById("cestaModal");
   var btn = document.getElementById("cestaBtn");

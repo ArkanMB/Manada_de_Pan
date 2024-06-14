@@ -7,7 +7,6 @@ var misPedidosContent = document.getElementById('misPedidosContent');
 // Cuando se hace clic en el botón "Mis pedidos", mostrar el modal
 misPedidosBtn.addEventListener('click', function() {
   modalPedido.style.display = 'block';
-  // Aquí podrías cargar el contenido de los pedidos en el modal
   var misPedidos = JSON.parse(localStorage.getItem('misPedidos')) || [];
   misPedidosContent.innerHTML = ''; // Vacía el contenido previo
 
