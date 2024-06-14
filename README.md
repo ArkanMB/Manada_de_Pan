@@ -7,7 +7,7 @@ https://www.figma.com/files/team/1369260973617909564/project/230932239/Team-proj
 
 Proyecto final:
 
-https://www.notion.so/team/87c2bace-a01a-43cb-8691-5e53aaa2ab51/join
+[https://www.notion.so/team/87c2bace-a01a-43cb-8691-5e53aaa2ab51/join](https://www.notion.so/Dise-o-figma-d779162744544e468053103bf91f8333)
 
 Netlify:
 
