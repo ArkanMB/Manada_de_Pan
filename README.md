@@ -9,5 +9,7 @@ Proyecto final:
 
 https://www.notion.so/team/87c2bace-a01a-43cb-8691-5e53aaa2ab51/join
 
+Netlify:
 
+https://manadadepan.netlify.app/
 
