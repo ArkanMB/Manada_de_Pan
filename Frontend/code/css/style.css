@@ -235,36 +235,38 @@ a {
 
 .modal {
   display: none;
-  /* Hidden by default */
   position: fixed;
-  /* Stay in place */
   z-index: 1;
-  /* Sit on top */
   padding-top: 100px;
-  /* Location of the box */
   left: 0;
   top: 0;
   width: 100%;
-  /* Full width */
-  height: 103%;
-  /* Full height */
+  height: 100%;
   overflow: auto;
-  /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0);
-  /* Fallback color */
   background-color: rgba(0, 0, 0, 0.77);
-  /* Black w/ opacity */
 }
 
-/* Modal Content */
 .modal-content {
-  background-color: #EFE9E7;
+  background-color: #efe9e7;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 400px;
+  max-width: 60%;
+  /* Por ejemplo, puedes ajustar este valor según tus necesidades */
   height: 60%;
   border-radius: 30px;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  /* Asegura que los elementos estén en columna */
+  justify-content: center;
+  /* Centra verticalmente */
+  align-items: center;
+  /* Centra horizontalmente */
+  height: 100%;
+  /* Opcional: ajusta la altura si deseas centrar verticalmente */
 }
 
 /* The Close Button */
@@ -282,18 +284,55 @@ a {
   cursor: pointer;
 }
 
-
+.columna {
+  width: calc(50% - 10px);
+  /* Calculamos el ancho de cada columna */
+}
 
 .form-usuario {
-  width: 300px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+}
+
+.form-container {
+  margin: 80px;
 }
 
 .form-usuario h2 {
   text-align: center;
   font-family: 'Roboto Serif';
+  font-size: 20px;
   color: #865C37;
   margin-bottom: 60px;
+}
+
+#login-form h2 {
+  margin-bottom: 100px;
+}
+
+
+.form-usuario::before {
+  content: '';
+  /* Contenido del pseudo-elemento, necesario para que se muestre */
+  position: absolute;
+  /* Posicionamiento absoluto para colocar la línea */
+  top: 0;
+  /* Posicionamiento desde la parte superior del contenedor */
+  bottom: 0;
+  /* Posicionamiento hasta la parte inferior del contenedor */
+  left: 50%;
+  /* Coloca la línea en el centro del contenedor */
+  width: 1px;
+  /* Ancho de la línea */
+  height: calc(100% - 500px);
+  /* Altura de la línea, ajusta según el alto del modal */
+  margin-top: 150px;
+  /* Ajusta según el margen superior deseado */
+  background-color: #764d2a;
+  /* Color de la línea */
+  transform: translateX(-50%);
+  /* Centra la línea verticalmente */
 }
 
 .form-usuario label {
@@ -328,16 +367,19 @@ a {
 }
 
 .input-contenedor input {
-  width: 100%;
   background-color: transparent;
   border: none;
   outline: none;
   font-size: 1rem;
-  padding: 0 0 5px 5px;
+  padding: 10px 0 5px 20px;
   color: #764d2a;
 }
 
+#login-form input[type="submit"][value="Iniciar sesión"] {
+  /* Estilos específicos para el input "Iniciar sesión" */
 
+  margin-top: 65px;
+}
 
 .form-usuario input[type="submit"] {
   width: 100%;
@@ -354,6 +396,69 @@ a {
 
 .form-usuario input[type="submit"]:hover {
   background-color: #764d2a;
+}
+
+@media screen and (max-width: 1340px) {
+
+  .modal-content {
+    height: 80%;
+    /* Ajusta la altura del modal para pantallas más pequeñas */
+    width: 40%;
+    padding-top: 5px;
+    /* Ajusta el espacio superior según sea necesario */
+  }
+
+  .login-container {
+    display: flex;
+    justify-content: center;
+    /* Centra horizontalmente el contenido */
+    align-items: center;
+    /* Centra verticalmente el contenido */
+  }
+
+  #login-form h2 {
+    margin-bottom: auto;
+  }
+
+
+  #login-form input[type="submit"][value="Iniciar sesión"] {
+    margin-top: auto;
+  }
+
+  .form-usuario {
+    flex-direction: column;
+    /* Cambia a disposición en columna */
+  }
+
+  .form-container {
+    margin-bottom: auto;
+    /* Espacio entre formularios */
+  }
+
+  .form-usuario::before {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .modal-content {
+    width: 100%;
+    /* Por ejemplo, puedes ajustar este valor según tus necesidades */
+
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .form-usuario input[type="submit"] {
+    width: 50%;
+
+  }
+
+  .input-contenedor input {
+    max-width: 10px;
+  }
+
+
 }
 
 
@@ -456,14 +561,8 @@ a {
 @media (max-width: 780px) {
 
   .opciones-principales {
-    position: fixed;
+
     top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    padding: 10px;
-    margin-left: 90px;
-    margin-top: 35px;
 
   }
 
@@ -476,12 +575,12 @@ a {
 
   }
 
-  .nav2{
+  .nav2 {
     display: flex;
     gap: 10px;
   }
 
-  .opciones-nav2{
+  .opciones-nav2 {
     margin: 0.5rem 1rem !important;
   }
 
@@ -506,6 +605,19 @@ a {
 
   .opciones-nav {
     font-size: 20px;
+  }
+
+  @media (max-width: 540px) {
+
+    .opciones-nav {
+      font-size: 10px;
+    }
+
+    .opciones-nav2 {
+      font-size: 8px;
+    }
+
+
   }
 
 
@@ -1019,6 +1131,15 @@ header img {
 
   .nav-footer {
     grid-template-columns: repeat(3, 1fr);
+    /* Una fila con tres columnas */
+    grid-template-rows: auto auto;
+    /* Dos filas */
+  }
+}
+
+@media (max-width: 580px) {
+  .nav-footer {
+    grid-template-columns: repeat(1, 1fr);
     /* Una fila con tres columnas */
     grid-template-rows: auto auto;
     /* Dos filas */

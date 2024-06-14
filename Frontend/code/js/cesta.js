@@ -53,32 +53,44 @@ function actualizarCesta() {
       totalPrecio += producto.precio;
     });
 
-    var hacerPedidoBtn = document.getElementById('hacerPedidoBtn');
-    if (!hacerPedidoBtn) {
-      // Si el botón no existe, crearlo y agregarlo al final del contenido del modal
-      hacerPedidoBtn = document.createElement('button');
-      hacerPedidoBtn.id = 'hacerPedidoBtn';
-      hacerPedidoBtn.textContent = 'Hacer pedido';
-      hacerPedidoBtn.addEventListener('click', function () {
-        if (confirm('¿Estás seguro de que deseas hacer el pedido?')) {
-          transferirCestaAMisPedidos(); // Llama a la función para transferir los productos de la cesta a los pedidos
-          localStorage.removeItem('cesta'); // Vacía la cesta
-          actualizarCesta();
-          mostrarMisPedidos(); // Aquí se llama a la función para mostrar los pedidos
-          alert('¡Pedido realizado con éxito!');
-        }
-      });
-
-      document.querySelector('.modal-content2').appendChild(hacerPedidoBtn);
+// Mostrar el botón "Hacer pedido" si hay productos en la cesta
+var hacerPedidoBtn = document.getElementById('hacerPedidoBtn');
+if (!hacerPedidoBtn) {
+  hacerPedidoBtn = document.createElement('button');
+  hacerPedidoBtn.id = 'hacerPedidoBtn';
+  hacerPedidoBtn.textContent = 'Hacer pedido';
+  hacerPedidoBtn.addEventListener('click', function () {
+    if (cesta.length === 0) {
+      alert('No puedes hacer un pedido porque la cesta está vacía.');
+      return;
     }
 
-    // Mostrar u ocultar el botón "Hacer pedido" basado en si la cesta está vacía o no
-    if (hacerPedidoBtn) {
-      hacerPedidoBtn.style.display = (cesta.length > 0) ? 'block' : 'none';
-    }
-  }
+    if (confirm('¿Estás seguro de que deseas hacer el pedido?')) {
+      transferirCestaAMisPedidos();
+      localStorage.removeItem('cesta');
+      actualizarCesta(); // Actualizar la cesta después de hacer el pedido
+      mostrarMisPedidos(); // Mostrar los pedidos
 
-  document.getElementById('totalPrecio').textContent = "Total: " + totalPrecio.toFixed(2) + '€';
+      // Recargar la página después de realizar el pedido
+      window.location.reload();
+
+      // Opcional: Ocultar el botón "Hacer pedido" después de realizar el pedido
+      hacerPedidoBtn.style.display = 'none';
+
+      alert('¡Pedido realizado con éxito!');
+    }
+  });
+
+  document.querySelector('.modal-content2').appendChild(hacerPedidoBtn);
+} else {
+  hacerPedidoBtn.style.display = 'block'; // Asegurar que el botón esté visible si hay productos en la cesta
+}
+
+// Verificar cesta después de cargar los productos
+verificarCesta();
+}
+
+document.getElementById('totalPrecio').textContent = "Total: " + totalPrecio.toFixed(2) + '€';
 }
 
 
@@ -147,5 +159,7 @@ function eliminarProducto(nombre) {
     cesta.splice(index, 1);
     localStorage.setItem('cesta', JSON.stringify(cesta));
     actualizarCesta();
+
+    window.location.reload();
   }
 }

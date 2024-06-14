@@ -123,8 +123,17 @@ body {
   background-color: #865C37;
 }
 
+@media (max-width: 1400px) {
+  .cards-container-anim {
+    grid-template-columns: 1fr 1fr;
+    /* Una columna */
+    padding: 0 10px;
+    /* Ajuste de padding para pantallas más pequeñas */
+  }
+}
+
 @media (max-width: 1050px) {
-  .cards-container {
+  .cards-container-anim {
     grid-template-columns: 1fr;
     /* Una columna */
     padding: 0 10px;
