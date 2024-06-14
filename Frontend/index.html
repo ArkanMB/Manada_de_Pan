@@ -64,49 +64,37 @@
           <span class="close">&times;</span>
           <div class="login-container">
             <div class="form-usuario">
-              <form id="auth-form" action="#">
+
+              <form id="login-form" action="#">
                 <h2>Iniciar sesión</h2>
-                <label>
-                  <input type="radio" name="opcion" value="login" checked> Login
-                </label>
-                <label>
-                  <input type="radio" name="opcion" value="registro"> Registro
-                </label>
-
-                <div id="login" style="display: block;">
-
-                  <div class="input-contenedor">
-                    <input type="email" id="login-usuario" name="email" required>
-                    <label for="login-usuario">Correo electrónico</label>
-                  </div>
-
-                  <div class="input-contenedor">
-                    <input type="password" id="login-contrasena" name="contrasena" required>
-                    <label for="login-contrasena">Contraseña</label>
-                  </div>
-
+                <div class="input-contenedor">
+                  <input type="email" id="login-usuario" name="email-login" required>
+                  <label for="login-usuario">Correo electrónico</label>
                 </div>
-
-                <div id="registro" style="display: none;">
-                  <div class="input-contenedor">
-                    <input type="text" id="registro-usuario" name="usuario" required>
-                    <label for="registro-usuario">Usuario</label>
-                  </div>
-
-                  <div class="input-contenedor">
-                    <input type="email" id="form-email" name="email" required>
-                    <label for="form-email">Correo electrónico</label>
-                  </div>
-
-
-
-                  <div class="input-contenedor">
-                    <input type="password" id="registro-contrasena" name="contrasena_registro" required>
-                    <label for="registro-contrasena">Contraseña</label>
-                  </div>
+                <div class="input-contenedor">
+                  <input type="password" id="login-contrasena" name="contrasena-login" required>
+                  <label for="login-contrasena">Contraseña</label>
                 </div>
-                <input type="submit" value="Enviar">
+                <input type="submit" value="Iniciar sesión">
               </form>
+              
+              <form id="registro-form" action="#">
+                <h2>Registro</h2>
+                <div class="input-contenedor">
+                  <input type="text" id="registro-usuario" name="usuario-registro" required>
+                  <label for="registro-usuario">Usuario</label>
+                </div>
+                <div class="input-contenedor">
+                  <input type="email" id="form-email" name="email-registro" required>
+                  <label for="form-email">Correo electrónico</label>
+                </div>
+                <div class="input-contenedor">
+                  <input type="password" id="registro-contrasena" name="contrasena-registro" required>
+                  <label for="registro-contrasena">Contraseña</label>
+                </div>
+                <input type="submit" value="Registrarse">
+              </form>
+
             </div>
           </div>
         </div>
@@ -120,8 +108,8 @@
   <nav class="nav2">
     <a href="#info-sobre-nosotros" class="opciones-nav2">Sobre nosotros</a>
     <a href="#info-ayudar" class="opciones-nav2">Cómo ayudar</a>
-    <a href="#" class="opciones-nav2" id="enlace">Nuestros animales</a>
-    <a href="#" class="opciones-nav2" id="enlace2">Servicios y productos</a>
+    <button class="opciones-nav2" id="enlace">Nuestros animales</button>
+    <button class="opciones-nav2" id="enlace2">Servicios y productos</button>
     <a href="#footer" class="opciones-nav2">Contacto</a>
   </nav>
 

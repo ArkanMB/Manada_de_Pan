@@ -18,11 +18,11 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::resource('/services', ServiceController::class);
 Route::resource('/animals', AnimalController::class);
-Route::resource('/orderservices', OrderServiceController::class);
-Route::resource('/orders', OrderController::class);
 
 Route::middleware('auth:sanctum')->group(function () {
 
   Route::get('logout', [AuthController::class, 'logout']);
-
+  Route::resource('/orderservices', OrderServiceController::class);
+  Route::resource('/orders', OrderController::class);
+  
 });

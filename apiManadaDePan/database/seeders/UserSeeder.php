@@ -16,12 +16,12 @@ class UserSeeder extends Seeder
         [
           'name' => 'Lusia',
           'email' => 'Lusia@example.com',
-          'password' => '123456'
+          'password' => '1234'
         ],
         [
           'name' => 'Lorrany',
           'email' => 'Loh@example.com',
-          'password' => '123456'
+          'password' => '1234'
         ]
       ]);
     }
