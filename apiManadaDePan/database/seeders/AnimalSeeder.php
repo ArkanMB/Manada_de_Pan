@@ -14,19 +14,61 @@ class AnimalSeeder extends Seeder
     {
         DB::table('animals')->insert([
           [
-            'name' => 'Reina',
-            'breed' => 'Pitbull',
-            'sex' => 'Female',
+            'name' => 'Coke',
+            'breed' => 'Golden Retriever',
+            'sex' => 'Male',
+            'age' => '3',
+            'animal_type_id' => '1'
+          ],
+          [
+            'name' => 'Duna',
+            'breed' => 'Mixbreed',
+            'sex' => 'Male',
+            'age' => '8',
+            'animal_type_id' => '1'
+          ],
+          [
+            'name' => 'Neo',
+            'breed' => 'Breton',
+            'sex' => 'Male',
             'age' => '5',
             'animal_type_id' => '1'
           ],
           [
-            'name' => 'Mirchi',
-            'breed' => 'Persa',
+            'name' => 'Vicky',
+            'breed' => 'Chiguagua',
+            'sex' => 'Female',
+            'age' => '1',
+            'animal_type_id' => '1'
+          ],
+          [
+            'name' => 'Otto',
+            'breed' => 'Siamese',
             'sex' => 'Male',
+            'age' => '2',
+            'animal_type_id' => '2'
+          ],
+          [
+            'name' => 'Ari',
+            'breed' => 'Black Cat',
+            'sex' => 'Female',
+            'age' => '4',
+            'animal_type_id' => '2'
+          ],
+          [
+            'name' => 'Lusi',
+            'breed' => 'Abisinio',
+            'sex' => 'Female',
+            'age' => '5',
+            'animal_type_id' => '2'
+          ],
+          [
+            'name' => 'Aerys',
+            'breed' => 'American',
+            'sex' => 'Female',
             'age' => '3',
             'animal_type_id' => '2'
-          ]
+          ],
         ]);
     }
 }
