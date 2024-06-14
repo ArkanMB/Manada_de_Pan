@@ -22,6 +22,7 @@ Route::resource('/animals', AnimalController::class);
 Route::middleware('auth:sanctum')->group(function () {
 
   Route::get('logout', [AuthController::class, 'logout']);
+
   Route::resource('/orderservices', OrderServiceController::class);
   Route::resource('/orders', OrderController::class);
   

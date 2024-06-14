@@ -30,10 +30,11 @@ class OrderServiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id): JsonResource
+    public function show($orderId): JsonResource
     {
-      $orderService = OrderService::find($id);
-      return new OrderServiceResource($orderService);
+        $orderServices = OrderService::where('order_id', $orderId)->get();
+
+        return OrderServiceResource::collection($orderServices);
     }
 
     /**

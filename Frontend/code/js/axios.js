@@ -102,20 +102,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const animal_button = document.getElementById("enlace");
+  // const animal_button = document.getElementById("enlace");
 
-  const animals_list = async () => {
-    try {
-      const { data } = await clienteAxios("/api/animals");
-      console.log(data);
-      return console.log(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const animals_list = async () => {
+  //   try {
+  //     const { data } = await clienteAxios("/api/animals");
+  //     console.log(data);
+  //     return console.log(data.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  animal_button.addEventListener("click", (event) => {
-    event.preventDefault();
-    animals_list();
-  });
+  // animal_button.addEventListener("click", (event) => {
+  //   event.preventDefault();
+  //   animals_list();
+  // });
 });
